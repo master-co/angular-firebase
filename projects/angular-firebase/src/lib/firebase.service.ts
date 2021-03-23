@@ -7,7 +7,6 @@ import { Subject } from 'rxjs';
 export class FirebaseService {
 
     app: firebase.app.App;
-
     appInitialized = new Subject();
 
     constructor(
@@ -21,11 +20,6 @@ export class FirebaseService {
     initialize(options: FirebaseOptions) {
         const existingApp = firebase.apps.find(app => app && app.name === options.name);
         this.app = existingApp || firebase.initializeApp(options.config, options.name);
-        // this.storage = this.app.storage();
-        // this.functions = this.app.functions(options.region);
-        // this.auth = this.app.auth();
-        // this.analytics = this.app.analytics();
-        // this.performance = this.app.performance();
         this.appInitialized.next(this.app);
         return this.app;
     }
