@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { FirebaseService } from '../firebase.service';
 
 import firebase from 'firebase/app';
-import 'firebase/analytics';
+import 'firebase/auth';
 
 @Injectable()
-export class AnalyticsService {
+export class FirebaseAuth {
     constructor(
         private firebaseService: FirebaseService
     ) {
@@ -18,9 +18,9 @@ export class AnalyticsService {
     }
 
     init() {
-        Object.setPrototypeOf(this, this.firebaseService.app.analytics());
+        Object.setPrototypeOf(this, this.firebaseService.app.auth());
         return this;
     }
 }
 
-export interface AnalyticsService extends firebase.analytics.Analytics { };
+export interface FirebaseAuth extends firebase.auth.Auth { };

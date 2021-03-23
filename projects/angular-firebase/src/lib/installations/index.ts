@@ -1,2 +1,2 @@
-export * from './installations.service';
+export * from './installations';
 export * from './installations.module';

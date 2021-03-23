@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DatabaseService, FirebaseDatabaseOptions, FIREBASE_DATABASE_OPTIONS } from './database.service';
+import { FirebaseDatabase, FirebaseDatabaseOptions, FIREBASE_DATABASE_OPTIONS } from './database';
 import { FirebaseModule } from '../firebase.module';
 
 @NgModule({
@@ -10,13 +10,13 @@ import { FirebaseModule } from '../firebase.module';
         FirebaseModule
     ]
 })
-export class DatabaseModule {
+export class FirebaseDatabaseModule {
     static init(options?: FirebaseDatabaseOptions) {
         return {
-            ngModule: FirebaseModule,
+            ngModule: FirebaseDatabaseModule,
             providers: [
                 { provide: FIREBASE_DATABASE_OPTIONS, useValue: options },
-                DatabaseService
+                FirebaseDatabase
             ]
         };
     }

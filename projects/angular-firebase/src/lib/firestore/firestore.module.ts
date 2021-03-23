@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FirestoreService } from './firestore.service';
+import { FirebaseFirestore } from './firestore';
 import { FirebaseModule } from '../firebase.module';
 import { FirestoreDocPipe } from './firestore-doc.pipe';
 import { FirestoreCollectionPipe } from './firestore-collection.pipe';
@@ -42,12 +42,12 @@ const SHARED = [
         ...SHARED
     ]
 })
-export class FirestoreModule {
+export class FirebaseFirestoreModule {
     static init() {
         return {
-            ngModule: FirebaseModule,
+            ngModule: FirebaseFirestoreModule,
             providers: [
-                FirestoreService
+                FirebaseFirestore
             ]
         };
     }

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AnalyticsService } from './analytics.service';
+import { FirebaseAnalytics } from './analytics';
 import { FirebaseModule } from '../firebase.module';
 
 @NgModule({
@@ -10,12 +10,12 @@ import { FirebaseModule } from '../firebase.module';
         FirebaseModule
     ]
 })
-export class AnalyticsModule {
+export class FirebaseAnalyticsModule {
     static init() {
         return {
-            ngModule: FirebaseModule,
+            ngModule: FirebaseAnalyticsModule,
             providers: [
-                AnalyticsService
+                FirebaseAnalytics
             ]
         };
     }

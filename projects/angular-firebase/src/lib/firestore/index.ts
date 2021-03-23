@@ -11,5 +11,5 @@ export * from './firestore-order-by.pipe';
 export * from './firestore-start-at.pipe';
 export * from './firestore-where.pipe';
 
-export * from './firestore.service';
+export * from './firestore';
 export * from './firestore.module';

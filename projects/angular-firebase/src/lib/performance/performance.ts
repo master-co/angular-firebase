@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { FirebaseService } from '../firebase.service';
 
 import firebase from 'firebase/app';
-import 'firebase/firestore';
+import 'firebase/performance';
 
 @Injectable()
-export class FirestoreService {
+export class FirebasePerformance {
     constructor(
         private firebaseService: FirebaseService
     ) {
@@ -18,9 +18,9 @@ export class FirestoreService {
     }
 
     init() {
-        Object.setPrototypeOf(this, this.firebaseService.app.firestore());
+        Object.setPrototypeOf(this, this.firebaseService.app.performance());
         return this;
     }
 }
 
-export interface FirestoreService extends firebase.firestore.Firestore { };
+export interface FirebasePerformance extends firebase.performance.Performance { };

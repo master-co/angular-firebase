@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { FirestoreService } from './firestore.service';
+import { FirebaseFirestore } from './firestore';
 
 import firebase from 'firebase/app';
 
@@ -9,7 +9,7 @@ import firebase from 'firebase/app';
 export class FirestoreCollectionPipe implements PipeTransform {
 
     constructor(
-        private firestore: FirestoreService
+        private firestore: FirebaseFirestore
     ) { }
 
     transform(collectionName: string): firebase.firestore.CollectionReference<firebase.firestore.DocumentData> {

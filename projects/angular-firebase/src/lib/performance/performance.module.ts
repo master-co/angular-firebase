@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PerformanceService } from './performance.service';
+import { FirebasePerformance } from './performance';
 import { FirebaseModule } from '../firebase.module';
 
 @NgModule({
@@ -10,12 +10,12 @@ import { FirebaseModule } from '../firebase.module';
         FirebaseModule
     ]
 })
-export class PerformanceModule {
+export class FirebasePerformanceModule {
     static init() {
         return {
-            ngModule: FirebaseModule,
+            ngModule: FirebasePerformanceModule,
             providers: [
-                PerformanceService
+                FirebasePerformance
             ]
         };
     }

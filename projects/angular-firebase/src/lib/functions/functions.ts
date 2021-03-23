@@ -5,7 +5,7 @@ import firebase from 'firebase/app';
 import 'firebase/functions';
 
 @Injectable()
-export class FunctionsService {
+export class FirebaseFunctions {
     constructor(
         private firebaseService: FirebaseService,
         @Inject(FIREBASE_FUNCTIONS_OPTIONS) public options: FirebaseFunctionsOptions
@@ -24,7 +24,7 @@ export class FunctionsService {
     }
 }
 
-export interface FunctionsService extends firebase.functions.Functions { };
+export interface FirebaseFunctions extends firebase.functions.Functions { };
 
 export const FIREBASE_FUNCTIONS_OPTIONS = new InjectionToken<FirebaseFunctionsOptions>('FirebaseFunctionsOptions');
 

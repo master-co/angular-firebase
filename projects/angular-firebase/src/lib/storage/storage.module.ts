@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StorageService } from './storage.service';
+import { FirebaseStorage } from './storage';
 import { FirebaseModule } from '../firebase.module';
 import { StorageMetadataPipe } from './storage-metadata.pipe';
 import { StorageUrlPipe } from './storage-url.pipe';
@@ -22,12 +22,12 @@ const SHARED = [
         ...SHARED
     ]
 })
-export class StorageModule {
+export class FirebaseStorageModule {
     static init() {
         return {
-            ngModule: FirebaseModule,
+            ngModule: FirebaseStorageModule,
             providers: [
-                StorageService
+                FirebaseStorage
             ]
         };
     }

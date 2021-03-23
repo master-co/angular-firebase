@@ -5,7 +5,7 @@ import firebase from 'firebase/app';
 import 'firebase/database';
 
 @Injectable()
-export class DatabaseService {
+export class FirebaseDatabase {
     constructor(
         private firebaseService: FirebaseService,
         @Inject(FIREBASE_DATABASE_OPTIONS) public options: FirebaseDatabaseOptions
@@ -24,7 +24,7 @@ export class DatabaseService {
     }
 }
 
-export interface DatabaseService extends firebase.database.Database { };
+export interface FirebaseDatabase extends firebase.database.Database { };
 
 export const FIREBASE_DATABASE_OPTIONS = new InjectionToken<FirebaseDatabaseOptions>('FirebaseDatabaseOptions');
 

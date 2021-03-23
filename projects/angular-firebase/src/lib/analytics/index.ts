@@ -1,2 +1,2 @@
-export * from './analytics.service';
+export * from './analytics';
 export * from './analytics.module';

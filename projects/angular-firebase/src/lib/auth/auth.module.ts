@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AuthService } from './auth.service';
+import { FirebaseAuth } from './auth';
 import { FirebaseModule } from '../firebase.module';
 
 @NgModule({
@@ -10,12 +10,12 @@ import { FirebaseModule } from '../firebase.module';
         FirebaseModule
     ]
 })
-export class AuthModule {
+export class FirebaseAuthModule {
     static init() {
         return {
-            ngModule: FirebaseModule,
+            ngModule: FirebaseAuthModule,
             providers: [
-                AuthService
+                FirebaseAuth
             ]
         };
     }

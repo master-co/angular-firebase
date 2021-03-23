@@ -1,2 +1,2 @@
-export * from './performance.service';
+export * from './performance';
 export * from './performance.module';

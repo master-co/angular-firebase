@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MessagingService } from './messaging.service';
+import { FirebaseMessaging } from './messaging';
 import { FirebaseModule } from '../firebase.module';
 
 @NgModule({
@@ -10,12 +10,12 @@ import { FirebaseModule } from '../firebase.module';
         FirebaseModule
     ]
 })
-export class MessagingModule {
+export class FirebaseMessagingModule {
     static init() {
         return {
-            ngModule: FirebaseModule,
+            ngModule: FirebaseMessagingModule,
             providers: [
-                MessagingService
+                FirebaseMessaging
             ]
         };
     }

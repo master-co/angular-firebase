@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { FirebaseService } from '../firebase.service';
 
 import firebase from 'firebase/app';
-import 'firebase/messaging';
+import 'firebase/firestore';
 
 @Injectable()
-export class MessagingService {
+export class FirebaseFirestore {
     constructor(
         private firebaseService: FirebaseService
     ) {
@@ -18,9 +18,9 @@ export class MessagingService {
     }
 
     init() {
-        Object.setPrototypeOf(this, this.firebaseService.app.messaging());
+        Object.setPrototypeOf(this, this.firebaseService.app.firestore());
         return this;
     }
 }
 
-export interface MessagingService extends firebase.messaging.Messaging { };
+export interface FirebaseFirestore extends firebase.firestore.Firestore { };

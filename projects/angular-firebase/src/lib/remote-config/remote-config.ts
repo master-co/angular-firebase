@@ -5,7 +5,7 @@ import firebase from 'firebase/app';
 import 'firebase/remote-config';
 
 @Injectable()
-export class RemoteConfigService {
+export class FirebaseRemoteConfig {
     constructor(
         private firebaseService: FirebaseService
     ) {
@@ -23,4 +23,4 @@ export class RemoteConfigService {
     }
 }
 
-export interface RemoteConfigService extends firebase.remoteConfig.RemoteConfig { };
+export interface FirebaseRemoteConfig extends firebase.remoteConfig.RemoteConfig { };

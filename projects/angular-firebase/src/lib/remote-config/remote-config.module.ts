@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RemoteConfigService } from './remote-config.service';
+import { FirebaseRemoteConfig } from './remote-config';
 import { FirebaseModule } from '../firebase.module';
 
 @NgModule({
@@ -10,12 +10,12 @@ import { FirebaseModule } from '../firebase.module';
         FirebaseModule
     ]
 })
-export class RemoteConfigModule {
+export class FirebaseRemoteConfigModule {
     static init() {
         return {
-            ngModule: FirebaseModule,
+            ngModule: FirebaseRemoteConfigModule,
             providers: [
-                RemoteConfigService
+                FirebaseRemoteConfig
             ]
         };
     }
