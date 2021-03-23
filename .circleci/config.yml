@@ -17,6 +17,9 @@ jobs:
           name: install
           command: npm i
       - run:
+          name: install cli
+          command: npm install angular-cli@latest -g
+      - run:
           name: build package
           command: npm run build
       - run:
