@@ -13,11 +13,11 @@ export class FirebaseService {
         @Inject(FIREBASE_OPTIONS) public options: FirebaseOptions
     ) {
         if (options) {
-            this.initialize(options);
+            this.init(options);
         }
     }
 
-    initialize(options: FirebaseOptions) {
+    init(options: FirebaseOptions) {
         const existingApp = firebase.apps.find(app => app && app.name === options.name);
         this.app = existingApp || firebase.initializeApp(options.config, options.name);
         this.appInitialized.next(this.app);
