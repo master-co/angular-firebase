@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { FirebaseService } from '../firebase.service';
 
 import firebase from 'firebase/app';
-import 'firebase/firestore';
+import 'firebase/remote-config';
 
 @Injectable()
-export class FirestoreService {
+export class RemoteConfigService {
     constructor(
         private firebaseService: FirebaseService
     ) {
@@ -18,9 +18,9 @@ export class FirestoreService {
     }
 
     init() {
-        Object.setPrototypeOf(this, this.firebaseService.app.firestore());
+        Object.setPrototypeOf(this, this.firebaseService.app.remoteConfig());
         return this;
     }
 }
 
-export interface FirestoreService extends firebase.firestore.Firestore { };
+export interface RemoteConfigService extends firebase.remoteConfig.RemoteConfig { };
