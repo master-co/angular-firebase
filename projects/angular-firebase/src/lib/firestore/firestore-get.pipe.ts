@@ -7,7 +7,7 @@ import firebase from 'firebase/app';
 })
 export class FirestoreGetPipe implements PipeTransform {
 
-    async transform(collectionRef: firebase.firestore.DocumentReference | firebase.firestore.CollectionReference<firebase.firestore.DocumentData>): Promise<any> {
+    async transform(collectionRef: firebase.firestore.DocumentReference | firebase.firestore.CollectionReference): Promise<any> {
         if (collectionRef instanceof firebase.firestore.DocumentReference) {
             const doc = await collectionRef.get();
             return doc.exists
