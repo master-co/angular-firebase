@@ -44,10 +44,10 @@ export class FirestoreOnSnapshotPipe implements PipeTransform {
                         }
 
                         const data = snapshot.data();
+
                         for (const key in data) {
                             this.result[key] = data[key];
                         }
-                        this.result = snapshot.id;
                     }
 
                     resolve();
