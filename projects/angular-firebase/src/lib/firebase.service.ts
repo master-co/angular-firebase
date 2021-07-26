@@ -18,7 +18,12 @@ export class FirebaseService {
     }
 
     init(options: FirebaseOptions) {
-        const existingApp = firebase.apps.find(app => app && app.name === options.name);
+        const existingApp =
+            firebase.apps.find(app => app &&
+                options.name
+                ? app.name === options.name
+                : app.name === '[DEFAULT]'
+            );
         this.app = existingApp || firebase.initializeApp(options.config, options.name);
         this.appInitialized.next(this.app);
         return this.app;
