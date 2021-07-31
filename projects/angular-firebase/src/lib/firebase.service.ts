@@ -38,6 +38,7 @@ export interface FirebaseConfig {
     projectId: string;
     storageBucket: string;
     messagingSenderId: string;
+    databaseURL: string;
     appId: string;
     measurementId?: string;
 }
