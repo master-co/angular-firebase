@@ -20,7 +20,12 @@ export class FirebaseFunctions {
     }
 
     init(options: FirebaseFunctionsOptions) {
-        Object.setPrototypeOf(this, this.zone.runOutsideAngular(() => this.firebaseService.app.functions(options?.region)));
+        const target = this.zone.runOutsideAngular(() => this.firebaseService.app.functions(options?.region));
+        Object.setPrototypeOf(this, target);
+        const prototype = Object.getPrototypeOf(target);
+        Object.keys(prototype).forEach((key) => {
+            this[key] = this.zone.runOutsideAngular(() => prototype[key]);
+        });
         return this;
     }
 }

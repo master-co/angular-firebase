@@ -20,7 +20,12 @@ export class FirebaseDatabase {
     }
 
     init(options: FirebaseDatabaseOptions) {
-        Object.setPrototypeOf(this, this.zone.runOutsideAngular(() => this.firebaseService.app.database(options?.url)));
+        const target = this.zone.runOutsideAngular(() => this.firebaseService.app.database(options?.url));
+        Object.setPrototypeOf(this, target);
+        const prototype = Object.getPrototypeOf(target);
+        Object.keys(prototype).forEach((key) => {
+            this[key] = this.zone.runOutsideAngular(() => prototype[key]);
+        });
         return this;
     }
 }

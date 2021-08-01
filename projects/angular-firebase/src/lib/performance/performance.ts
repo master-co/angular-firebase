@@ -19,7 +19,12 @@ export class FirebasePerformance {
     }
 
     init() {
-        Object.setPrototypeOf(this, this.zone.runOutsideAngular(() => this.firebaseService.app.performance()));
+        const target = this.zone.runOutsideAngular(() => this.firebaseService.app.performance());
+        Object.setPrototypeOf(this, target);
+        const prototype = Object.getPrototypeOf(target);
+        Object.keys(prototype).forEach((key) => {
+            this[key] = this.zone.runOutsideAngular(() => prototype[key]);
+        });
         return this;
     }
 }
