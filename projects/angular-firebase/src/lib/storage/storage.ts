@@ -19,11 +19,12 @@ export class FirebaseStorage {
     }
 
     init() {
-        const prototype = Object.getPrototypeOf(this.zone.runOutsideAngular(() => this.firebaseService.app.storage()));
+        const target = this.zone.runOutsideAngular(() => this.firebaseService.app.storage());
+        Object.setPrototypeOf(this, target);
+        const prototype = Object.getPrototypeOf(target);
         Object.keys(prototype).forEach((key) => {
-            prototype[key] = this.zone.runOutsideAngular(() => prototype[key]);
+            this[key] = this.zone.runOutsideAngular(() => prototype[key]);
         });
-        Object.setPrototypeOf(this, prototype);
         return this;
     }
 }
