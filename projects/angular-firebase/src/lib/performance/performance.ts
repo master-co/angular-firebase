@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { FirebaseService } from '../firebase.service';
 
 import firebase from 'firebase/app';
@@ -7,7 +7,8 @@ import 'firebase/performance';
 @Injectable()
 export class FirebasePerformance {
     constructor(
-        private firebaseService: FirebaseService
+        private firebaseService: FirebaseService,
+        private zone: NgZone
     ) {
         if (firebaseService.app) {
             this.init();
@@ -18,7 +19,7 @@ export class FirebasePerformance {
     }
 
     init() {
-        Object.setPrototypeOf(this, this.firebaseService.app.performance());
+        Object.setPrototypeOf(this, this.zone.runOutsideAngular(() => this.firebaseService.app.performance()));
         return this;
     }
 }

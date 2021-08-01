@@ -1,4 +1,4 @@
-import { Inject, Injectable, InjectionToken } from '@angular/core';
+import { Inject, Injectable, InjectionToken, NgZone } from '@angular/core';
 import { FirebaseService } from '../firebase.service';
 
 import firebase from 'firebase/app';
@@ -8,7 +8,8 @@ import 'firebase/database';
 export class FirebaseDatabase {
     constructor(
         private firebaseService: FirebaseService,
-        @Inject(FIREBASE_DATABASE_OPTIONS) public options: FirebaseDatabaseOptions
+        @Inject(FIREBASE_DATABASE_OPTIONS) public options: FirebaseDatabaseOptions,
+        private zone: NgZone
     ) {
         if (firebaseService.app) {
             this.init(options);
@@ -19,7 +20,7 @@ export class FirebaseDatabase {
     }
 
     init(options: FirebaseDatabaseOptions) {
-        Object.setPrototypeOf(this, this.firebaseService.app.database(options?.url));
+        Object.setPrototypeOf(this, this.zone.runOutsideAngular(() => this.firebaseService.app.database(options?.url)));
         return this;
     }
 }

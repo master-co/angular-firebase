@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { FirebaseService } from '../firebase.service';
 
 import firebase from 'firebase/app';
@@ -7,7 +7,8 @@ import 'firebase/remote-config';
 @Injectable()
 export class FirebaseRemoteConfig {
     constructor(
-        private firebaseService: FirebaseService
+        private firebaseService: FirebaseService,
+        private zone: NgZone
     ) {
         if (firebaseService.app) {
             this.init();
@@ -18,7 +19,7 @@ export class FirebaseRemoteConfig {
     }
 
     init() {
-        Object.setPrototypeOf(this, this.firebaseService.app.remoteConfig());
+        Object.setPrototypeOf(this, this.zone.runOutsideAngular(() => this.firebaseService.app.remoteConfig()));
         return this;
     }
 }
