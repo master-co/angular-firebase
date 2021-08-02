@@ -23,7 +23,7 @@ export class FirebaseRemoteConfig {
         Object.setPrototypeOf(this, target);
         const prototype = Object.getPrototypeOf(target);
         Object.keys(prototype).forEach((key) => {
-            this[key] = this.zone.runOutsideAngular(() => prototype[key]);
+            this[key] = this.zone.run(() => prototype[key]);
         });
         return this;
     }
