@@ -17,6 +17,6 @@ export class AppComponent {
         .getDownloadURL()
         .then((url) => {
             console.log(url);
-        })
+        });
     }
 }

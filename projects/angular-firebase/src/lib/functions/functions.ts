@@ -21,11 +21,11 @@ export class FirebaseFunctions {
 
     init(options: FirebaseFunctionsOptions) {
         const target = this.zone.runOutsideAngular(() => this.firebaseService.app.functions(options?.region));
-        Object.setPrototypeOf(this, target);
         const prototype = Object.getPrototypeOf(target);
         Object.keys(prototype).forEach((key) => {
-            this[key] = this.zone.run(() => prototype[key]);
+            prototype[key] = this.zone.run(() => prototype[key]);
         });
+        Object.setPrototypeOf(this, target);
         return this;
     }
 }
