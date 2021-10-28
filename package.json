@@ -9,7 +9,7 @@
         "lint": "ng lint",
         "e2e": "ng e2e"
     },
-    "dependencies": {
+    "peerDependencies": {
         "@angular/animations": "~11.2.1",
         "@angular/common": "~11.2.1",
         "@angular/compiler": "~11.2.1",
@@ -18,10 +18,12 @@
         "@angular/platform-browser": "~11.2.1",
         "@angular/platform-browser-dynamic": "~11.2.1",
         "@angular/router": "~11.2.1",
+        "zone.js": "~0.11.3"
+    },
+    "dependencies": {
         "firebase": "^8.8.0",
         "rxjs": "~6.6.0",
-        "tslib": "^2.0.0",
-        "zone.js": "~0.11.3"
+        "tslib": "^2.0.0"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "~0.1102.5",
