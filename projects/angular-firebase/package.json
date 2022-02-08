@@ -6,7 +6,7 @@
     "private": false,
     "repository": {
         "type": "git",
-        "url": "https://github.com/master-style/angular-firebase.git"
+        "url": "https://github.com/master-co/angular-firebase.git"
     },
     "peerDependencies": {
         "firebase": ">=8.0.1"
